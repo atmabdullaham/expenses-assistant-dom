@@ -37,12 +37,23 @@ function removeClass(id, className) {
  document.getElementById(id).classList.remove(className);
 }
 
-
+// History button functionality
 document.getElementById("history-tab").addEventListener("click", function () {
  addClass("history-tab", "text-white")
  addClass("history-tab", "bg-gradient-to-r")
  addClass("history-tab", "from-blue-500")
  addClass("history-tab", "to-purple-600")
+ addClass("assistant-tab", "text-gray-600")
+
+ addClass("expense-form", "hidden")
+
 
  removeClass("history-tab", "text-gray-600")
+ removeClass("assistant-tab", "bg-gradient-to-r")
+ removeClass("assistant-tab", "from-blue-500")
+ removeClass("assistant-tab", "to-purple-600")
+ removeClass("assistant-tab", "text-white")
+ removeClass("results", "hidden")
 })
+
+// Assistant button functionality
