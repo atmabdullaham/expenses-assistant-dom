@@ -17,9 +17,10 @@ function removeClass(id, className) {
  document.getElementById(id).classList.remove(className);
 }
 
-
+let count = 0;
 
 document.getElementById("calculate").addEventListener("click", function (event) {
+ count++;
  const income = inputValueHunter("income")
  const software = inputValueHunter("software")
  const courses = inputValueHunter("courses")
@@ -30,6 +31,21 @@ document.getElementById("calculate").addEventListener("click", function (event) 
  const balance = income - totalExpenses;
  innerText("balance", balance)
 
+ const historyItem = document.createElement("div");
+ historyItem.className = "bg-white p-3 rounded-md border-l-2 border-indigo-500"
+
+ historyItem.innerHTML = `
+  <h4> Serial ${count}</h4>
+  </br>
+  <p class="text-xs text-gray-700"> ${new Date().toLocaleDateString()} </p>
+  <p class="text-md text-gray-700"> Income ${income.toFixed(2)} </p>
+  <p class="text-xs text-gray-700"> Expenses ${totalExpenses.toFixed(2)} </p>
+  <p class="text-xs text-gray-700"> Balance ${balance.toFixed(2)} </p>
+  
+ `
+ const historyContainer = document.getElementById("history-list");
+ historyContainer.insertBefore(historyItem, historyContainer.firstChild)
+ removeClass("history-section", "hidden")
 
 })
 
